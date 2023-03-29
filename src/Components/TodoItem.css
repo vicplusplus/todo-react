@@ -1,0 +1,30 @@
+.TodoItem {
+    display: flex;
+    align-items: center;
+    background-color: #323741;
+    padding: 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin: 5px;
+}
+
+.TodoItem-checkbox {
+    flex: 0 0 auto;
+    margin-right: 10px;
+}
+
+.TodoItem-description {
+    flex: 1 0 auto;
+    color: white;
+    white-space: nowrap;
+}
+
+.TodoItem-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.TodoItem-buttons input {
+    margin-left: 5px;
+}
