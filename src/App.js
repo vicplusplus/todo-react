@@ -9,8 +9,7 @@ function App() {
 		// and then refreshes the page. preventDefault() lets you override this behavior
 		e.preventDefault();
 
-		const formData = new FormData(e.target)
-
+		const formData = new FormData(e.target);
 		const obj = Object.fromEntries(formData.entries());
 
 		// Don't do anything if input only has whitespace or nothing
@@ -22,25 +21,21 @@ function App() {
 		// with the same description.
 		if (list.some((e) => e.description === obj.description))
 			return;
+			
+		// TODO: how will you add an element to the list while also updating the original variable?
 
-		// useState hooks only update when the value of the state variable changes.
-		// Therefore, to update a list, you have to make a new list to let useState
-		// know that it has been modified.
-		setList(list.concat(obj));
 		setNewItem("");
 	}
 
 	function deleteItem(descriptionToDelete)
     {
-		setList(list.filter((e) => e.description !== descriptionToDelete));
+		// TODO: how do you delete an item from a list??
     }
 
 	// We'll be using an array to store the data displayed in our to-do list.
 	const [list, setList] = useState([]);
 	const [newItem, setNewItem] = useState([]);
 
-	// Note: We use an embedded map() function call to convert the
-	// array elements into copies of the TodoItem component.
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -49,7 +44,7 @@ function App() {
 				</h1>
 			</header>
 			<ul className="App-item-list">
-				{list.map((val) => <TodoItem description={val.description} key={val.description} deleteItem={deleteItem}/>)}
+				{/* TODO: Insert your list here. Hint: use array.map() to convert array elements into TodoItem components. */}
 			</ul>
 			<form method="post" onSubmit={handleSubmit}>
 				<input type="submit" className="submit-item-button"/>
