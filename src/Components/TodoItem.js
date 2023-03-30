@@ -1,17 +1,20 @@
-import { useId } from "react";
+import { useState } from "react";
 import "./TodoItem.css"
 
-function TodoItem({ description }) {
-    const id = useId();
+function TodoItem({ description, deleteItem }) {
+    const [isFinished, setIsFinished] = useState(false);
+
+    const toggleFinished = () => setIsFinished(!isFinished);
+
+    const signalDelete = () => {
+        deleteItem(description);
+    }
 
     return (
-        <li className="TodoItem" key={id}>
-            <input type="checkbox" id="isFinished" className="TodoItem-checkbox"></input>
-            <span className="TodoItem-description">{description}</span>
-            <div className="TodoItem-buttons">
-                <input type="button" id="isEditing"></input>
-                <input type="button" id="isDeleting"></input>
-            </div>
+        <li className="TodoItem">
+            <input type="checkbox" id="isFinished" className="TodoItem-checkbox" onChange={toggleFinished}></input>
+            <span className="TodoItem-description">{isFinished ? <del>{description}</del> : description}</span>
+            <button onClick={signalDelete} className="TodoItem-delete-button">🗑️</button>
         </li>
     )
 }

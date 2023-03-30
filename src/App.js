@@ -20,16 +20,20 @@ function App() {
 		// Don't add duplicate elements
 		// Uses some() to iterate through array and see if there is any element
 		// with the same description.
-		if (list.some((el) => el.description === obj.description))
+		if (list.some((e) => e.description === obj.description))
 			return;
 
 		// useState hooks only update when the value of the state variable changes.
 		// Therefore, to update a list, you have to make a new list to let useState
 		// know that it has been modified.
-		const newList = list.concat(obj);
-		setList(newList);
+		setList(list.concat(obj));
 		setNewItem("");
 	}
+
+	function deleteItem(descriptionToDelete)
+    {
+		setList(list.filter((e) => e.description !== descriptionToDelete));
+    }
 
 	// We'll be using an array to store the data displayed in our to-do list.
 	const [list, setList] = useState([]);
@@ -45,7 +49,7 @@ function App() {
 				</h1>
 			</header>
 			<ul className="App-item-list">
-				{list.map((val) => <TodoItem description={val.description} key={val.description}/>)}
+				{list.map((val) => <TodoItem description={val.description} key={val.description} deleteItem={deleteItem}/>)}
 			</ul>
 			<form method="post" onSubmit={handleSubmit}>
 				<input type="submit" className="submit-item-button"/>

@@ -19,12 +19,9 @@
     white-space: nowrap;
 }
 
-.TodoItem-buttons {
+.TodoItem-delete-button {
     display: flex;
     align-items: center;
     margin-left: 10px;
-}
-
-.TodoItem-buttons input {
-    margin-left: 5px;
+    background: none;
 }
